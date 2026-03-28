@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>La Vallée Des Fleurs | Restaurant & Café Skoura</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #D4AF37;
+      --gold-dark: #B48C2C;
+      --cream: #FDF8F0;
+      --sand: #E8DDCF;
+      --terracotta: #C67B4A;
+      --olive: #6A7152;
+      --deep-green: #2C3E2B;
+      --dark-bg: #1F2A1B;
+      --charcoal: #2C2820;
+      --paper: #FFF9F2;
+      --text-dark: #2C2418;
+      --text-soft: #5E5A4F;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--paper);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--sand); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 0 48px;
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(31, 42, 27, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+      transition: all 0.3s;
+    }
+
+    .logo-wrap { display: flex; align-items: center; gap: 14px; }
+    .logo-badge {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .logo-sub {
+      font-size: 0.65rem;
+      color: rgba(255,245,220,0.7);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: -4px;
+    }
+
+    .header-actions { display: flex; gap: 16px; }
+    .btn-order {
+      background: var(--gold);
+      color: var(--deep-green);
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(212,175,55,0.3);
+    }
+    .btn-order:hover { background: var(--gold-dark); transform: translateY(-2px); }
+    .btn-reserve {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 24px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .btn-reserve:hover { background: rgba(212,175,55,0.15); }
+
+    /* HERO */
+    .hero {
+      min-height: 85vh;
+      background: linear-gradient(135deg, rgba(31,42,27,0.85), rgba(44,40,32,0.75)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%23D4AF37" opacity="0.05" d="M500,100 L650,250 L600,400 L500,500 L400,400 L350,250 L500,100Z"/><circle cx="500" cy="550" r="80" fill="%23D4AF37" opacity="0.03"/></svg>');
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+      position: relative;
+    }
+    .hero-content { max-width: 800px; z-index: 2; }
+    .hero-flower {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+      letter-spacing: 8px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      color: white;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .hero h1 span { color: var(--gold); font-style: italic; }
+    .hero p {
+      font-size: 1rem;
+      color: rgba(255,245,220,0.9);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gold);
+    }
+    .hero-buttons { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--deep-green);
+      padding: 14px 38px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-primary:hover { transform: scale(1.02); background: var(--gold-dark); }
+    .btn-outline-light {
+      border: 2px solid var(--gold);
+      color: white;
+      padding: 14px 38px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-outline-light:hover { background: rgba(212,175,55,0.2); }
+
+    /* NAVIGATION */
+    .nav-sticky {
+      position: sticky;
+      top: 85px;
+      z-index: 99;
+      background: white;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #eee;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .nav-sticky::-webkit-scrollbar { display: none; }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      padding: 0 20px;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 24px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-soft);
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .nav-link i { font-size: 0.9rem; }
+    .nav-link:hover { color: var(--gold-dark); }
+    .nav-link.active {
+      color: var(--gold-dark);
+      border-bottom-color: var(--gold);
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 32px 80px;
+    }
+
+    /* CATEGORY SECTIONS */
+    .menu-category {
+      margin-bottom: 80px;
+      scroll-margin-top: 120px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+    .menu-category.reveal { opacity: 1; transform: none; }
+
+    .cat-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 2px dashed rgba(212,175,55,0.4);
+      padding-bottom: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .cat-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--deep-green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cat-title i { color: var(--gold); font-size: 1.8rem; }
+    .cat-sub {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* MENU GRID */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 8px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      background: white;
+      border-radius: 16px;
+      transition: all 0.2s;
+      border: 1px solid #f0e5d8;
+      cursor: default;
+    }
+    .menu-item:hover {
+      transform: translateX(6px);
+      border-color: var(--gold);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.03);
+    }
+    .item-info { flex: 1; }
+    .item-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-dark);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .item-name-en {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      font-style: italic;
+    }
+    .item-desc {
+      font-size: 0.7rem;
+      color: #9a8e7a;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
+    .item-price {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--gold-dark);
+      font-family: 'Montserrat', monospace;
+      margin-left: 16px;
+      white-space: nowrap;
+    }
+    .price-unit { font-size: 0.7rem; font-weight: 500; color: var(--text-soft); }
+
+    /* SPECIAL ITEMS (like drink choice) */
+    .special-note {
+      background: #FEF7E6;
+      border-left: 4px solid var(--gold);
+      padding: 14px 20px;
+      border-radius: 12px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--olive);
+    }
+
+    /* ORDER BANNER */
+    .order-banner {
+      background: linear-gradient(115deg, var(--deep-green) 0%, #2c3e2b 100%);
+      border-radius: 32px;
+      padding: 48px 40px;
+      margin: 60px 0 70px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+    }
+    .banner-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .banner-text p { color: #e2dcc9; font-size: 0.9rem; }
+    .banner-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .whatsapp-big {
+      background: #25D366;
+      padding: 14px 32px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.2s;
+    }
+    .call-big {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 14px 32px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .whatsapp-big:hover, .call-big:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+    /* MAP SECTION */
+    .map-section {
+      background: #FCF8F0;
+      border-radius: 32px;
+      padding: 32px;
+      margin-top: 20px;
+    }
+    .map-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .map-title .tag {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--gold-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .map-title h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--deep-green);
+    }
+    .map-btn {
+      background: white;
+      border: 1px solid var(--gold);
+      padding: 10px 22px;
+      border-radius: 40px;
+      text-decoration: none;
+      color: var(--gold-dark);
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .map-frame {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #ede3d0;
+      margin-bottom: 20px;
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 380px;
+      border: none;
+    }
+    .review-strip {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 16px 0;
+    }
+    .review-card {
+      background: white;
+      padding: 12px 22px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: #5a5242;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      border: 1px solid #f0e3d2;
+    }
+    .stars { color: var(--gold); letter-spacing: 2px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep-green);
+      color: #e2dcc9;
+      padding: 48px 32px 32px;
+      margin-top: 64px;
+      border-radius: 48px 48px 0 0;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-col h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--gold);
+    }
+    .footer-col p, .footer-col a {
+      font-size: 0.85rem;
+      color: #cdc6ae;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .footer-col a:hover { color: var(--gold); }
+    .copyright {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      font-size: 0.7rem;
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 0 20px; height: 70px; }
+      .nav-sticky { top: 70px; }
+      main { padding: 40px 20px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .cat-title { font-size: 1.8rem; }
+      .order-banner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-wrap">
+        <div class="logo-badge">
+          <i class="fas fa-utensils"></i>
+        </div>
+        <div>
+          <div class="logo-name">La Vallée Des Fleurs</div>
+          <div class="logo-sub">Chez le Patron Barbu · Skoura</div>
+        </div>
+      </div>
+      .
+  <div class="header-actions">
+    <a href="https://wa.me/212670732175" class="btn-order" target="_blank"><i class="fab fa-whatsapp"></i> Commander</a>
+    <a href="tel:0670732175" class="btn-reserve"><i class="fas fa-phone-alt"></i> Appeler</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-flower">✻ ✿ ✻</div>
+    <h1>La Vallée <span>Des Fleurs</span></h1>
+    <p>Cuisine marocaine authentique, tajines parfumés, fromage de chèvre artisanal et produits 100% locaux. Une expérience unique au cœur de Skoura.</p>
+    <div class="hero-stats">
+      <span class="stat"><i class="fas fa-star"></i> 4.2 ★ (182 avis)</span>
+      <span class="stat"><i class="fas fa-clock"></i> Ouvert · 8h–22h</span>
+    </div>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn-primary"><i class="fas fa-utensils"></i> Découvrir le menu</a>
+      <a href="#localisation" class="btn-outline-light"><i class="fas fa-map-marker-alt"></i> Nous trouver</a>
+    </div>
+  </div>
+</section>
+
+<div class="nav-sticky" id="navBar">
+  <div class="nav-links">
+    <a href="#petitdej" class="nav-link"><i class="fas fa-mug-hot"></i> Petit déj</a>
+    <a href="#entree" class="nav-link"><i class="fas fa-carrot"></i> Entrées</a>
+    <a href="#sandwich" class="nav-link"><i class="fas fa-baguette"></i> Sandwichs</a>
+    <a href="#tajines" class="nav-link"><i class="fas fa-utensils"></i> Tajines</a>
+    <a href="#couscous" class="nav-link"><i class="fas fa-bread-slice"></i> Couscous</a>
+    <a href="#grillades" class="nav-link"><i class="fas fa-fire"></i> Grillades</a>
+    <a href="#omelettes" class="nav-link"><i class="fas fa-egg"></i> Omelettes</a>
+    <a href="#boissons" class="nav-link"><i class="fas fa-coffee"></i> Boissons</a>
+    <a href="#jus" class="nav-link"><i class="fas fa-apple-alt"></i> Jus</a>
+    <a href="#desserts" class="nav-link"><i class="fas fa-cake-candles"></i> Desserts</a>
+  </div>
+</div>
+
+<main id="menu">
+<!-- PETIT DÉJEUNER -->
+<section class="menu-category" id="petitdej">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-sun"></i> Petit Déjeuner</div><div class="cat-sub">الفطور · Breakfast</div></div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-name">Petit Déjeuner complet</div>
+          <div class="item-desc">
+            · Jus d'orange frais <br>
+            · Boisson au choix  <br>
+            · Omelette au fromage de chèvre avec pain <br>
+        </div>
+          <div class="item-name-en" style="font-size:0.7rem; margin-top:4px;">Fresh orange juice · Drink of your choice · Goat cheese omelette with bread</div>
+        </div>
+        <div class="item-price">70 <span class="price-unit">DH</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRÉES -->
+  <section class="menu-category" id="entree">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-leaf"></i> Entrées</div><div class="cat-sub">المقبلات · Starters</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Salade marocaine <span class="item-name-en">Moroccan salad</span></div></div><div class="item-price">40 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Salade variée <span class="item-name-en">Mixed salad</span></div></div><div class="item-price">50 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Harira (soupe marocaine) <span class="item-name-en">Harira Moroccan soup</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- SANDWICHS -->
+  <section class="menu-category" id="sandwich">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-bread-slice"></i> Sandwichs</div><div class="cat-sub">ساندويش · Sandwiches</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Sandwich kefta (viande hachée) <span class="item-name-en">Kofta sandwich</span></div></div><div class="item-price">50 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Sandwich dinde <span class="item-name-en">Turkey sandwich</span></div></div><div class="item-price">40 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- TAJINES -->
+  <section class="menu-category" id="tajines">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-utensils"></i> Tajines & Plats</div><div class="cat-sub">الطواجن · Tagines</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Tajine skouri au bœuf parfumé</div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Tajine de bœuf aux pruneaux <span class="item-name-en">Beef tagine with prunes</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Tajine de poulet aux citrons <span class="item-name-en">Chicken tagine with lemon</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Tajine de poulet aux légumes <span class="item-name-en">Chicken tagine with vegetables</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Tajine végétarien <span class="item-name-en">Vegetarian tagine</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Tajine kefta (viande hachée)</div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">kefta grillé<span class="item-name-en">grilled kofta</span></div></div><div class="item-price">80 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- COUSCOUS -->
+  <section class="menu-category" id="couscous">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-utensil-spoon"></i> Couscous</div><div class="cat-sub">كسكس · Couscous</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Couscous au bœuf <span class="item-name-en">Beef couscous</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Couscous au poulet <span class="item-name-en">Chicken couscous</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Couscous végétarien <span class="item-name-en">Vegetarian couscous</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Couscous Royal <span class="item-name-en">Royal Couscous</span></div></div><div class="item-price">90 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- GRILLADES -->
+  <section class="menu-category" id="grillades">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-fire"></i>Brochettes</div><div class="cat-sub">مشاوي · Grills</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Brochettes de bœuf <span class="item-name-en">Beef skewers</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Brochettes de poulet <span class="item-name-en">Chicken skewers</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Poulet grillé <span class="item-name-en">Grilled chicken</span></div></div><div class="item-price">70 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- OMELETTES -->
+  <section class="menu-category" id="omelettes">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-egg"></i> Omelettes</div><div class="cat-sub">أومليت · Omelettes</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Omelette mature <span class="item-name-en">Mature omelette</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Omelette berbère <span class="item-name-en">Berber omelette</span></div></div><div class="item-price">50 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Omelette au fromage de chèvre <span class="item-name-en">Goat cheese omelette</span></div></div><div class="item-price">40 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- BOISSONS -->
+  <section class="menu-category" id="boissons">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-coffee"></i> Boissons</div><div class="cat-sub">المشروبات · Drinks</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Café expresso</div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Café au lait <span class="item-name-en">Coffee with milk</span></div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Thé à la menthe <span class="item-name-en">Mint tea</span></div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Thé au safran pur<span class="item-name-en">pure saffron tea</span></div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Verveine<span class="item-name-en">Venena</span></div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Limonade</div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Coca zero / Coca normal</div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Eau minérale 1.5L<span class="item-name-en">mineral water 1.5L</span></div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Eau gazeuse <span class="item-name-en">Sparkling water</span></div></div><div class="item-price">15 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- JUS NATURE -->
+  <section class="menu-category" id="jus">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-apple-alt"></i> Jus Nature</div><div class="cat-sub">العصائر · Fresh juices</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Jus d'orange <span class="item-name-en">Orange juice</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Jus de pomme <span class="item-name-en">Apple juice</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Jus de banane <span class="item-name-en">Banana juice</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Jus d'avocat <span class="item-name-en">Avocado juice</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Jus de fruits <span class="item-name-en">Fruit juice</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- DESSERTS -->
+  <section class="menu-category" id="desserts">
+    <div class="cat-header"><div class="cat-title"><i class="fas fa-cake-candles"></i> Desserts</div><div class="cat-sub">التحليات · Desserts</div></div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="item-info"><div class="item-name">Orange à la cannelle <span class="item-name-en">Orange with cinnamon</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Fruit de saison <span class="item-name-en">Seasonal fruit</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Salade de fruits <span class="item-name-en">Fruit salad</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Yaourt nature <span class="item-name-en">Natural yogurt</span></div></div><div class="item-price">30 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Fromage de chèvre <span class="item-name-en">Goat cheese</span></div></div><div class="item-price">40 <span class="price-unit">DH</span></div></div>
+      <div class="menu-item"><div class="item-info"><div class="item-name">Thé à la menthe avec gâteau marocain<span class="item-name-en"><span class="item-name-en">Vegetarian couscous</span></span></div></div><div class="item-price">40 <span class="price-unit">DH</span></div></div>
+    </div>
+  </section>
+
+  <!-- BANNER COMMANDE -->
+  <div class="order-banner">
+    <div class="banner-text"><h3>🌿 Une envie de tajine ou couscous ?</h3><p>Commandez directement par WhatsApp ou appelez-nous. Livraison rapide sur Skoura.</p></div>
+    <div class="banner-buttons">
+      <a href="https://wa.me/212670732175" class="whatsapp-big" target="_blank"><i class="fab fa-whatsapp fa-lg"></i> 06 70 73 21 75</a>
+      <a href="tel:0670732175" class="call-big"><i class="fas fa-phone-alt"></i> Appeler</a>
+    </div>
+  </div>
+
+  <!-- LOCALISATION & AVIS -->
+  <section class="map-section" id="localisation">
+    <div class="map-header">
+      <div class="map-title"><div class="tag">📍 Notre jardin</div><h2>La Vallée Des Fleurs</h2><p style="margin-top: 6px;">Centre, Skoura 45502 · Maroc</p></div>
+      
+    </div>
+    <div class="map-frame">
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.4842!2d-6.5573439!3d31.0607753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdbb67c81bea5b07%3A0xeed7a8d0b6c6a1ff!2sRestaurant%20Cafe%20La%20Vallee%20Des%20Fleurs%2C%20Chez%20Le%20Patron%20Barbu!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma"
+        width="100%" 
+        height="380" 
+        style="border:0; border-radius: 24px;" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>
+    </div>
+    <div class="review-strip">
+      <div class="review-card"><span class="stars">★★★★☆</span> 4.2 · 182 avis Google</div>
+      <div class="review-card">⭐ Mad O : "Plats frais 100% locaux, cuisine maison"</div>
+      <div class="review-card">⭐ Aurélien : "Fromage de chèvre exceptionnel"</div>
+      <div class="review-card">⭐ Issenmann : "Cuisine marocaine très fraîche, excellent"</div>
+      <div class="review-card">⭐ Qualité & accueil chaleureux</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col"><h4>La Vallée Des Fleurs</h4><p>Chez le Patron Barbu</p><p>Cuisine authentique · Produits locaux</p><p>Fromage de chèvre artisanal</p></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:0670732175"><i class="fas fa-phone"></i> 06 70 73 21 75</a><a href="https://wa.me/212670732175"><i class="fab fa-whatsapp"></i> WhatsApp commandes</a><a href="#"><i class="fab fa-facebook"></i> La Vallée Des Fleurs</a></div>
+    <div class="footer-col"><h4>Horaires</h4><p>📅 Tous les jours</p><p>⏰ 08:00 – 22:00</p></div>
+  </div>
+  <div class="copyright">© 2025 La Vallée Des Fleurs — Restaurant & Café · Skoura, Maroc. Tous droits réservés.</div>
+</footer>
+
+<script>
+  // reveal sections on scroll
+  const categories = document.querySelectorAll('.menu-category');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal'); });
+  }, { threshold: 0.2 });
+  categories.forEach(c => observer.observe(c));
+
+  // active nav on scroll
+  const sections = document.querySelectorAll('.menu-category');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const secTop = sec.offsetTop - 150;
+      if (pageYOffset >= secTop) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+    });
+  });
+  // smooth scroll
+  document.querySelectorAll('.nav-link, .btn-primary, .btn-outline-light').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const hash = this.getAttribute('href');
+      if (hash && hash.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(hash);
+        if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  categories.forEach(c => c.classList.add('reveal'));
+</script>
+</body>
+</html>
